@@ -1,26 +1,26 @@
 from django.shortcuts import render, redirect
 from collection.forms import ThingForm
-from collection.models import Thing
+from collection.models import Books
 from django.template.defaultfilters import slugify
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 
 # Create your views here.
 def index(request):
-    things = Thing.objects.all()
+    things = Books.objects.all()
     return render(request, 'index.html', {
         'things': things,
         })
 
 def thing_detail(request, slug):
-    thing = Thing.objects.get(slug=slug)
+    thing = Books.objects.get(slug=slug)
     return render(request, 'things/thing_detail.html', {
         'thing': thing,
         })
 
 @login_required
 def edit_thing(request, slug):
-    thing = Thing.objects.get(slug=slug)
+    thing = Books.objects.get(slug=slug)
     if thing.user != request.user:
         raise Http404
     form_class = ThingForm
@@ -54,9 +54,9 @@ def create_thing(request):
 
 def browse_by_name(request, initial=None):
     if initial:
-        things = Thing.objects.filter(name__istartswith=initial).order_by('name')
+        things = Books.objects.filter(title__istartswith=initial).order_by('title')
     else:
-        things = Thing.objects.all().order_by('name')
+        things = Books.objects.all().order_by('title')
     
     return render(request, 'search/search.html', {
         'things': things,

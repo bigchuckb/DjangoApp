@@ -1,7 +1,7 @@
 from django.forms import ModelForm
-from collection.models import Thing
+from collection.models import Books
 
 class ThingForm(ModelForm):
     class Meta:
-        model = Thing
-        fields = ('name', 'description',)
+        model = Books
+        fields = ('title', 'description',)
