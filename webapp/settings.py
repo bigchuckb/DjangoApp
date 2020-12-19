@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'registration',
-    'django-chartjs'
+    'django-chartjs',
 ]
 
 MIDDLEWARE = [
