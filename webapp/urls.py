@@ -11,9 +11,10 @@ from django.contrib.auth.views import(
 )
 
 urlpatterns = [
-    path('',views.index, name='home'),
-    path('about/',TemplateView.as_view(template_name='about.html'),name='about'),
-    path('contact/',TemplateView.as_view(template_name='contact.html'),name='contact'),
+    path('',views.pie_chart, name='home'),
+    path('lograting/',views.add_rating,name='lograting'),
+    path('logshtetl/',views.add_shtetl,name='logshtetl'),
+    path('shtetlwins/',views.shtetl_record, name='shtetl'),
     path('things/', RedirectView.as_view(pattern_name='browse', permanent=True)),
     path('things/<slug>/', views.thing_detail, name='thing_detail'),
     path('things/<slug>/edit/', views.edit_thing, name='edit_thing'),
