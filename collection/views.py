@@ -71,7 +71,7 @@ def create_thing(request):
         if form.is_valid():
             thing = form.save(commit=False)
             thing.user = request.user
-            thing.slug = slugify(thing.name)
+            thing.slug = slugify(thing.title)
             thing.save()
             return redirect('thing_detail', slug=thing.slug)
     else:
