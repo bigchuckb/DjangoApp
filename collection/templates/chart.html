@@ -4,7 +4,7 @@
 {% endblock title %}
 
 {%block content %}
-    <canvas id="myChart" width="200" height="200"></canvas>
+    <canvas id="myChart" style="position: relative; height:40vh; width:80vw"></canvas>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <script>
@@ -16,7 +16,9 @@
             datasets: [{
                 label: 'Average Rating',
                 data: {{  data|safe  }},
-                borderWidth: 1
+                borderWidth: 1,
+                backgroundColor: 'rgb(65,105,225)',
+                borderColor: 'rgb(65,105,225)',
             }]
         },
         options: {
