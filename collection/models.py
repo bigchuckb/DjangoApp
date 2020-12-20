@@ -14,17 +14,13 @@ class Books(models.Model):
         return self.rating_set.aggregate(Avg('rating'))['rating__avg']
 
     def __str__(self):
-            return self.title
+            return self.title or ''
 
 
 class Rating(models.Model):
     rating = models.DecimalField(decimal_places=1, max_digits=3)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     book = models.ForeignKey('Books', on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.rating
-
 
 class Shtetl(models.Model):
     game_played = models.DateTimeField(auto_now=True)
