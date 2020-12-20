@@ -76,7 +76,6 @@ def create_thing(request):
             return redirect('thing_detail', slug=thing.slug)
     else:
         form = form_class()
-    
     return render(request, 'things/create_thing.html', {'form': form,
     })
 

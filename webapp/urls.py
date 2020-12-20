@@ -2,7 +2,7 @@ from django.urls import path, include
 from django.contrib import admin
 from django.views.generic import TemplateView, RedirectView
 from collection import views
-from collection.backends import MyRegistrationView
+#from collection.backends import MyRegistrationView
 from django.contrib.auth.views import(
     PasswordResetView,
     PasswordResetDoneView,
@@ -21,8 +21,8 @@ urlpatterns = [
     path('browse/', RedirectView.as_view(pattern_name='browse', permanent=True)),
     path('browse/name/',views.browse_by_name, name='browse'),
     path('browse/name/<initials>/',views.browse_by_name, name='browse_by_name'),
-    path('accounts/register/', MyRegistrationView.as_view(), name='registration_register'),
-    path('accounts/create_thing/', views.create_thing, name='registration_create_thing'),
+#    path('accounts/register/', MyRegistrationView.as_view(), name='registration_register'),
+    path('addbook/', views.create_thing, name='registration_create_thing'),
     path('accounts/password/reset/',PasswordResetView.as_view(),name="password_reset"),
     path('accounts/password/reset/done/',PasswordResetDoneView.as_view(),name="password_reset_done"),
     path('accounts/password/reset/<uidb64>/<token>/',PasswordResetConfirmView.as_view(),name="password_reset_confirm"),
