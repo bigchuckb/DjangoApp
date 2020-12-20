@@ -129,4 +129,4 @@ def shtetl_record(request):
                 'data': data}
     print(context)
 
-    return render(request, 'chart_2.html',context)
+    return render(request, 'shtetlwins.html',context)
