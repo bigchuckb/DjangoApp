@@ -1,6 +1,6 @@
 from django.urls import path, include
 from django.contrib import admin
-from django.views.generic import TemplateView, RedirectView
+from django.views.generic import RedirectView
 from collection import views
 #from collection.backends import MyRegistrationView
 from django.contrib.auth.views import(
@@ -15,6 +15,7 @@ urlpatterns = [
     path('lograting/',views.add_rating,name='lograting'),
     path('logshtetl/',views.add_shtetl,name='logshtetl'),
     path('shtetlwins/',views.shtetl_record, name='shtetl'),
+    path('ratingrecord/',views.user_rating, name='ratingrecord'),
     path('things/', RedirectView.as_view(pattern_name='browse', permanent=True)),
     path('things/<slug>/', views.thing_detail, name='thing_detail'),
     path('things/<slug>/edit/', views.edit_thing, name='edit_thing'),

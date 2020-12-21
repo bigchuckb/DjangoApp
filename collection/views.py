@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
+from django.template.defaultfilters import slugify
 from collection.forms import ThingForm, RatingForm, ShtetlForm
 from collection.models import Books, Rating, Shtetl
-from django.template.defaultfilters import slugify
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 
@@ -36,13 +36,12 @@ def edit_thing(request, slug):
         'form': form,
     })
 
-def add_rating(request, slug=None):
+def add_rating(request):
     form_class = RatingForm
     if request.method == 'POST':
         form = form_class(request.POST)
         if form.is_valid():
             rating = form.save(commit=False)
-            rating.user = request.user
             rating.save()
             return redirect('home')
     else:
@@ -56,7 +55,6 @@ def add_shtetl(request):
         form = form_class(request.POST)
         if form.is_valid():
             shtetl = form.save(commit=False)
-            shtetl.user = request.user
             shtetl.save()
             return redirect('home')
     else:
@@ -130,3 +128,27 @@ def shtetl_record(request):
     print(context)
 
     return render(request, 'shtetlwins.html',context)
+
+def user_rating(request):
+    labels = []
+    data = []
+    data_2 = []
+
+    queryset = Rating.objects.all()
+    for rating in queryset:
+        if str(rating.book) in labels:
+            pass
+        else:
+            labels.append(str(rating.book))
+            data.append(str(rating.rating))
+            data_2.append(str(rating.user))
+
+    context = {'title':'User Ratings',
+                'labels': labels,
+                'data': data,
+                'data_2': data_2,
+                }
+                
+    print(context)
+
+    return render(request, 'user_ratings.html', context)

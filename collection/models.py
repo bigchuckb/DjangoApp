@@ -14,7 +14,7 @@ class Books(models.Model):
         return self.rating_set.aggregate(Avg('rating'))['rating__avg']
 
     def __str__(self):
-            return self.title or ''
+        return self.title or ''
 
 
 class Rating(models.Model):
@@ -25,6 +25,3 @@ class Rating(models.Model):
 class Shtetl(models.Model):
     game_played = models.DateTimeField(auto_now=True)
     winner = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.winner
