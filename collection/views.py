@@ -137,10 +137,15 @@ def user_rating(request):
     mikey = []
     michael = []
     charlie = []
+    data = []
 
     labels_query = Rating.objects.order_by('book').values_list('book__title', flat=True).distinct()
     for label in labels_query:
         labels.append(str(label))
+        queryset = Books.objects.filter(title=str(label))
+        for book in queryset:
+            avg_rating = book.average_rating
+            data.append(str(avg_rating))
 
     for user in range(1,5):
         query = Rating.objects.order_by('book').filter(user_id=user).values_list('rating', flat=True)
@@ -154,14 +159,13 @@ def user_rating(request):
             elif user == 4:
                 michael.append(str(record))
 
-
-
     context = {'title':'User Ratings',
                 'labels': labels,
                 'harry': harry,
                 'mikey': mikey,
                 'michael': michael,
                 'charlie': charlie,
+                'data': data,
                 }
 
     print(context)

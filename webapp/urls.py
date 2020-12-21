@@ -11,7 +11,7 @@ from django.contrib.auth.views import(
 )
 
 urlpatterns = [
-    path('',views.pie_chart, name='home'),
+    path('',views.user_rating, name='home'),
     path('lograting/',views.add_rating,name='lograting'),
     path('logshtetl/',views.add_shtetl,name='logshtetl'),
     path('shtetlwins/',views.shtetl_record, name='shtetl'),

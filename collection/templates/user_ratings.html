@@ -14,12 +14,12 @@
         data: {
             labels: {{ labels|safe  }},
             datasets: [{
-                label: 'Harry',
-                data: {{  harry|safe  }},
+                label: 'Average Rating',
+                data: {{  data|safe  }},
                 borderWidth: 1,
-                backgroundColor: 'rgb(65,105,225)',
-                borderColor: 'rgb(65,105,225)',
-            },
+                backgroundColor: 'rgb(112,128,144)',
+                borderColor: 'rgb(112,128,144)',
+            },  
             {
                 label: 'Charlie',
                 data: {{ charlie|safe  }},
@@ -28,18 +28,25 @@
                 borderColor: 'rgb(65,105,225)',
             },
             {
+                label: 'Harry',
+                data: {{  harry|safe  }},
+                borderWidth: 1,
+                backgroundColor: 'rgba(255,215,0 ,1)',
+                borderColor: 'rgba(255,215,0 ,1)',
+            },
+            {
                 label: 'Mikey',
                 data: {{ mikey|safe }},
                 borderWidth: 1,
-                backgroundColor: 'rgb(65,105,225)',
-                borderColor: 'rgb(65,105,225)',
+                backgroundColor: 'rgba(34,139,34 ,1)',
+                borderColor: 'rgba(34,139,34 ,1)',
             },
             {
                 label: 'Michael',
                 data: {{ michael|safe }},
                 borderWidth: 1,
-                backgroundColor: 'rgb(65,105,225)',
-                borderColor: 'rgb(65,105,225)',
+                backgroundColor: 'rgba(255,99,71 ,1)',
+                borderColor: 'rgba(255,99,71 ,1)',
             },            
         
         ]
