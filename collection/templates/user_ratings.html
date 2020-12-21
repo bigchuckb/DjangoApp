@@ -14,16 +14,33 @@
         data: {
             labels: {{ labels|safe  }},
             datasets: [{
-                label: 'Ratings',
-                data: {{  data_2|safe  }},
+                label: 'Harry',
+                data: {{  harry|safe  }},
                 borderWidth: 1,
                 backgroundColor: 'rgb(65,105,225)',
                 borderColor: 'rgb(65,105,225)',
             },
             {
-                label: 'Users',
-                data: {{ data|safe }},
-            }    
+                label: 'Charlie',
+                data: {{ charlie|safe  }},
+                borderWidth: 1,
+                backgroundColor: 'rgb(65,105,225)',
+                borderColor: 'rgb(65,105,225)',
+            },
+            {
+                label: 'Mikey',
+                data: {{ mikey|safe }},
+                borderWidth: 1,
+                backgroundColor: 'rgb(65,105,225)',
+                borderColor: 'rgb(65,105,225)',
+            },
+            {
+                label: 'Michael',
+                data: {{ michael|safe }},
+                borderWidth: 1,
+                backgroundColor: 'rgb(65,105,225)',
+                borderColor: 'rgb(65,105,225)',
+            },            
         
         ]
         },

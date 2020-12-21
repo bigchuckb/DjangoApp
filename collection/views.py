@@ -4,6 +4,8 @@ from collection.forms import ThingForm, RatingForm, ShtetlForm
 from collection.models import Books, Rating, Shtetl
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
+from django.contrib.auth.models import User
+
 
 # Create your views here.
 def index(request):
@@ -131,24 +133,37 @@ def shtetl_record(request):
 
 def user_rating(request):
     labels = []
-    data = []
-    data_2 = []
+    harry = []
+    mikey = []
+    michael = []
+    charlie = []
 
-    queryset = Rating.objects.all()
-    for rating in queryset:
-        if str(rating.book) in labels:
-            pass
-        else:
-            labels.append(str(rating.book))
-            data.append(str(rating.rating))
-            data_2.append(str(rating.user))
+    labels_query = Rating.objects.order_by('book').values_list('book__title', flat=True).distinct()
+    for label in labels_query:
+        labels.append(str(label))
+
+    for user in range(1,5):
+        query = Rating.objects.order_by('book').filter(user_id=user).values_list('rating', flat=True)
+        for record in query:
+            if user == 1:
+                charlie.append(str(record))
+            elif user == 2:
+                harry.append(str(record))
+            elif user == 3:
+                mikey.append(str(record))
+            elif user == 4:
+                michael.append(str(record))
+
+
 
     context = {'title':'User Ratings',
                 'labels': labels,
-                'data': data,
-                'data_2': data_2,
+                'harry': harry,
+                'mikey': mikey,
+                'michael': michael,
+                'charlie': charlie,
                 }
-                
+
     print(context)
 
     return render(request, 'user_ratings.html', context)

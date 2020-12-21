@@ -5,7 +5,7 @@ from django.db.models import Avg
 class Books(models.Model):
     title = models.CharField(max_length=255)
     author = models.CharField(max_length=255)
-    description = models.TextField()
+    description = models.TextField(blank=True, null=True)
     slug = models.SlugField(unique=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     

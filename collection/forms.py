@@ -4,7 +4,7 @@ from collection.models import Books, Rating, Shtetl
 class ThingForm(ModelForm):
     class Meta:
         model = Books
-        fields = ('title', 'description', 'author', 'owner')
+        fields = ('title', 'author', 'owner')
 
 class RatingForm(ModelForm):
     class Meta:
